@@ -1,0 +1,120 @@
+# .gitignore for Python + Arduino (.ino) projects
+
+# --- Python ---
+# Byte-compiled / optimized / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.env.*
+venv/
+venv*/
+ENV/
+env/
+.venv/
+
+# Packaging / distribution
+build/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+pip-wheel-metadata/
+*.egg
+wheelhouse/
+
+# Test / coverage / lint caches
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+.nox/
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Misc
+*.log
+*.pot
+*.mo
+*.pyproj
+.local/
+.cache/
+instance/
+*.db
+*.sqlite3
+
+# Compiled extensions / binary artifacts
+*.so
+*.dylib
+*.dll
+*.pyd
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / credentials
+secret*
+secrets.*
+credentials.*
+*.pem
+*.key
+*.crt
+
+# Backup / swap files
+*~
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+
+# --- Arduino / .ino ---
+# Arduino/AVR build artifacts
+build/
+build-*/
+arduino_build/
+*.o
+*.obj
+*.elf
+*.map
+*.hex
+*.bin
+*.eep
+*.a
+*.lst
+*.sym
+*.d
+
+# PlatformIO
+.pio/
+.pioenvs/
+lib/.cache/
+
+# Arduino IDE / sketches / temp
+*.tmp
+*.tmp.*
+*.cache
+.arduino/
+*.build/
+
+# Common editor/project files (may be created in Arduino projects)
+.vscode/
+.idea/
+
+# Ignore user-specific or generated firmware packages
+*.zip
+*.tar.gz
+
+# Keep the repository clean of any generated files
