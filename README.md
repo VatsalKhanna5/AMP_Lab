@@ -78,8 +78,8 @@ Follow these steps to get your dashboard running.
 ### 3. Python Environment Setup
 1.  **Clone this repository:**
     ```bash
-    git clone [https://github.com/your-username/pro-arduino-dashboard.git](https://github.com/your-username/pro-arduino-dashboard.git)
-    cd pro-arduino-dashboard
+    git clone https://github.com/VatsalKhanna5/AMP_Lab
+    cd AMP_Lab
     ```
 2.  **Create and activate a virtual environment:**
     ```bash
@@ -102,7 +102,7 @@ Follow these steps to get your dashboard running.
 2.  Find your Arduino's serial port (e.g., `COM8` on Windows, `/dev/ttyUSB0` on Linux).
 3.  Run the Streamlit app:
     ```bash
-    streamlit run your_app_name.py
+    streamlit run app.py
     ```
 4.  Your browser will open to the app. In the sidebar, **enter the correct Serial Port** and enjoy your live dashboard!
 
