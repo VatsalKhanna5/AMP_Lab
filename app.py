@@ -1,5 +1,5 @@
 import streamlit as st
-import serial
+import serial 
 import pandas as pd
 import plotly.express as px
 from streamlit_autorefresh import st_autorefresh
@@ -29,7 +29,7 @@ page = st.sidebar.radio(
 
 # Sidebar: Connection & Settings
 with st.sidebar.expander("⚙️ Connection & Settings", expanded=True):
-    serial_port = st.text_input("Serial Port", "COM8") 
+    serial_port = st.text_input("Serial Port", "COM12") 
     baud_rate = st.number_input("Baud Rate", value=9600, step=100) 
     history_length = st.slider("Data History Length", 50, 1000, 150) 
     
@@ -102,28 +102,35 @@ def get_interpretation(temp, hum):
     return "\n".join(f"* {item}" for item in analysis)
 
 def create_plotly_3d_plot(df):
-    """Generates an interactive 3D Plotly figure."""
+    """Generates an interactive 3D Plotly figure showing temp & humidity variation over time."""
     if df.shape[0] < 2: return None
     
-    # Using the fix for older Plotly versions (update_layout)
-    fig = px.line_3d(df, 
-                     x='Time', 
+    # Create a numeric time axis for better 3D visualization
+    df_plot = df.copy()
+    df_plot['TimeNumeric'] = range(len(df_plot))
+    
+    fig = px.line_3d(df_plot, 
+                     x='TimeNumeric', 
                      y='Temperature', 
                      z='Humidity', 
-                     title="Sensor Data Over Time",
-                     color='Temperature',
-                     markers=True)
+                     title="Temperature & Humidity Variation Over Time (3D)",
+                     color='TimeNumeric',
+                     markers=True,
+                     hover_data={'Time': True, 'TimeNumeric': False})
     
     fig.update_layout(
-        coloraxis_colorscale='Bluered', # Set color scale here
+        coloraxis_colorscale='Viridis',
         scene=dict(
-            xaxis_title='Time',
-            yaxis_title='Temp (°C)',
-            zaxis_title='Humidity (%)'
+            xaxis_title='Time Progression →',
+            yaxis_title='Temperature (°C)',
+            zaxis_title='Humidity (%)',
+            camera=dict(
+                eye=dict(x=1.5, y=1.5, z=1.3)  # Better viewing angle
+            )
         ),
         margin=dict(l=0, r=0, b=0, t=40)
     )
-    fig.update_traces(marker=dict(size=3), line=dict(width=5))
+    fig.update_traces(marker=dict(size=4), line=dict(width=3))
     return fig
 
 # --- Main App Logic ---
